@@ -13,20 +13,21 @@ and the Flutter guide for
 
 TODO: This package help us to select time of day, allow us to select specific hours selectable and
 minute interval this package is update on the
-package [day_night_time_picker](https://pub.dev/packages/day_night_time_picker).
-We use this package and modified the code to fit to select specific hours.
+package [day_night_time_picker](https://pub.dev/packages/day_night_time_picker). We use this package
+and modified the code to fit to select specific hours.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Help you to select specific hours selectable and minute interval.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to start using the package.
+No additional information to use package.
+<img width="1027" alt="Screen Shot 2022-11-07 at 4 22 39 PM" src="https://user-images.githubusercontent.com/88558337/200321279-db2da78a-7ffa-42ea-93b2-7d3bd7a4389d.png">
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples to `/example` folder.
+Longer examples find in `/example` folder.
 
 ## Additional information
 
