@@ -20,23 +20,31 @@ and modified the code to fit to select specific hours.
 
 Help you to select specific hours selectable and minute interval.
 
-## Getting started
-
-No additional information to use package.
+## Screenshots
 
 <a href="#screenshots">
 <img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
 </a>
 
-## Usage
+## Getting started
 
-To use the plugin, just import package
+For help getting started with Flutter, view our online [documentation]().
+
+## 💻 Installation
+
+In the dependencies: section of your pubspec.yaml, add the following line:
+
+```
+interval_time_selector:<latest_version>
+```
+
+Import in your project
 
 ```
 import 'package:interval_time_selector/show_time_picker/day_time_picker.dart';
 ```
 
-### Example
+## Usage
 
 ```
 Navigator.of(context).push(
@@ -59,7 +67,14 @@ Navigator.of(context).push(
         );
 ```
 
-Longer examples find in `/example` folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/tree/master/example).
+Longer examples find in `/example`
+folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/tree/master/example).
+
+## 👨 Updated By
+
+```
+Mohamad Abd-Ulaziz
+```
 
 ## Additional information
 

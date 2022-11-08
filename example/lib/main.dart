@@ -76,7 +76,6 @@ class _HomeState extends State<Home> {
                         minuteInterval: MinuteInterval.FIVE,
                         maxMinuteAtMaximumHour: 0,
                         minMinuteAtCurrentHour: 30,
-                        // Optional onChange to receive value as DateTime
                         onChangeDateTime: (DateTime dateTime) {
                           debugPrint("[debug datetime]:  $dateTime");
                         },
