@@ -27,14 +27,14 @@ class SunMoon extends StatelessWidget {
                 child: timeState.widget.sunAsset ??
                     const Image(
                       image: AssetImage(
-                        "assets/icons/sun.png",
+                        "packages/interval_time_selector/assets/icons/sun.png",
                       ),
                     ))
             : Container(
                 key: const ValueKey(2),
                 child: timeState.widget.moonAsset ??
                     const Image(
-                      image: AssetImage("assets/icons/moon.png"),
+                      image: AssetImage("packages/interval_time_selector/assets/icons/moon.png"),
                     ),
               ),
         transitionBuilder: (child, anim) {
