@@ -23,11 +23,7 @@ Help you to select specific hours selectable and minute interval.
 ## Getting started
 
 No additional information to use package.
-
-<a href="#screenshots">
-<img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
-</a>
-
+![My Image](https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png)
 ## Usage
 
 Longer examples find in `/example` folder.
