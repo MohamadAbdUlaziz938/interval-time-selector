@@ -23,7 +23,9 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  #assets:
+  assets:
+    - assets/sun.png
+    - assets/moon.png
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
