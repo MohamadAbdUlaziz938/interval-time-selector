@@ -29,11 +29,15 @@ No additional information to use package.
 </a>
 
 ## Usage
+
 To use the plugin, just import package
+
 ```
 import 'package:interval_time_selector/show_time_picker/day_time_picker.dart';
 ```
+
 ### Example
+
 ```
 Navigator.of(context).push(
           showPicker(
@@ -54,7 +58,8 @@ Navigator.of(context).push(
           ),
         );
 ```
-Longer examples find in `/example` folder.
+
+Longer examples find in `/example` folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/tree/master/example).
 
 ## Additional information
 
