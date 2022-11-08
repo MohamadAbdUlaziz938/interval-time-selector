@@ -21,12 +21,12 @@ and modified the code to fit to select specific hours.
 Help you to select specific hours selectable and minute interval.
 
 ## Getting started
+
 No additional information to use package.
 
 <a href="#screenshots">
 <img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
 </a>
-
 
 ## Usage
 
@@ -46,7 +46,6 @@ Navigator.of(context).push(
             minuteInterval: MinuteInterval.FIVE,
             maxMinuteAtMaximumHour: 0,
             minMinuteAtCurrentHour: 30,
-            // Optional onChange to receive value as DateTime
             onChangeDateTime: (DateTime dateTime) {
               debugPrint("[debug datetime]:  $dateTime");
             },
