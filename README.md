@@ -26,10 +26,6 @@ Help you to select specific hours selectable and minute interval.
 <img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
 </a>
 
-## Getting started
-
-For help getting started with Flutter, view our online [documentation](https://docs.flutter.dev/development/packages-and-plugins/developing-packages).
-
 ## 💻 Installation
 
 In the dependencies: section of your pubspec.yaml, add the following line:
@@ -76,7 +72,10 @@ folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/t
 Mohamad Abd-Ulaziz
 ```
 
-## Additional information
+## Getting started
 
-TODO: Tell users more about the package: where to find more information, how to contribute to the
-package, how to file issues, what response they can expect from the package authors, and more.
+For help getting started with Flutter, view our
+online [documentation](https://docs.flutter.dev/development/packages-and-plugins/developing-packages)
+.
+
+
