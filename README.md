@@ -28,7 +28,7 @@ Help you to select specific hours selectable and minute interval.
 
 ## Getting started
 
-For help getting started with Flutter, view our online [documentation]().
+For help getting started with Flutter, view our online [documentation](https://docs.flutter.dev/development/packages-and-plugins/developing-packages).
 
 ## 💻 Installation
 
