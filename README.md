@@ -29,6 +29,28 @@ No additional information to use package.
 
 Longer examples find in `/example` folder.
 
+```
+Navigator.of(context).push(
+          showPicker(
+            workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
+            context: context,
+            value: _time,
+            minHour: 9,
+            maxHour: 1,
+            maxMinute: 55,
+            minMinute: 0,
+            onChange: onTimeChanged,
+            minuteInterval: MinuteInterval.FIVE,
+            maxMinuteAtMaximumHour: 0,
+            minMinuteAtCurrentHour: 30,
+            // Optional onChange to receive value as DateTime
+            onChangeDateTime: (DateTime dateTime) {
+              debugPrint("[debug datetime]:  $dateTime");
+            },
+          ),
+        );
+```
+
 ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to contribute to the
