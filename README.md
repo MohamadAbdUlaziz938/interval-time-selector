@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: This package help us to select time of day, allow us to select specific hours selectable and
+This package help us to select time of day, allow us to select specific hours selectable and
 minute interval this package is update on the
 package [day_night_time_picker](https://pub.dev/packages/day_night_time_picker). We use this package
 and modified the code to fit to select specific hours.
