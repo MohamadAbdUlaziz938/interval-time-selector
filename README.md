@@ -23,8 +23,7 @@ Help you to select specific hours selectable and minute interval.
 ## Getting started
 
 No additional information to use package.
-<img width="1027" alt="Screen Shot 2022-11-07 at 4 22 39 PM" src="https://user-images.githubusercontent.com/88558337/200321279-db2da78a-7ffa-42ea-93b2-7d3bd7a4389d.png">
-
+![My Image](../screenshots/1.png)
 ## Usage
 
 Longer examples find in `/example` folder.
