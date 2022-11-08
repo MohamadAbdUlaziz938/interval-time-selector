@@ -21,8 +21,8 @@ and modified the code to fit to select specific hours.
 Help you to select specific hours selectable and minute interval.
 
 ## Getting started
-
 No additional information to use package.
+
 ![My Image](https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png)
 ## Usage
 
