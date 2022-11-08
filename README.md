@@ -1,18 +1,7 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## interval_time_selector
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-This package help us to select time of day, allow us to select specific hours selectable and
-minute interval this package is update on the
+Interval time picker interval minutes, specific hour. This package help us to select time of day,
+allow us to select specific hours selectable and minute interval this package is update on the
 package [day_night_time_picker](https://pub.dev/packages/day_night_time_picker). We use this package
 and modified the code to fit to select specific hours.
 
