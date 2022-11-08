@@ -23,7 +23,7 @@ Help you to select specific hours selectable and minute interval.
 ## Getting started
 
 No additional information to use package.
-![My Image](../screenshots/1.png)
+![My Image](/Users/rightwarellc/Documents/flutter-projects/interval_time_picker/screenshots/1.png)
 ## Usage
 
 Longer examples find in `/example` folder.
