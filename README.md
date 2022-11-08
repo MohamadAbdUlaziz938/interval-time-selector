@@ -25,7 +25,7 @@ No additional information to use package.
 
 <a href="#screenshots">
 <img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
-</a>&nbsp;
+</a>;
 ## Usage
 
 Longer examples find in `/example` folder.
