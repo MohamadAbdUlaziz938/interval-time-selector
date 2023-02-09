@@ -5,6 +5,19 @@ import 'package:flutter/material.dart';
 import '../utils/constant.dart';
 import 'time.dart';
 
+class _ModelBindingScope extends InheritedWidget {
+  final TimeModelBindingState modelBindingState;
+
+  const _ModelBindingScope({
+    Key? key,
+    required this.modelBindingState,
+    required Widget child,
+  }) : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(_ModelBindingScope oldWidget) => true;
+}
+
 /// Stateful [Widget] for [InheritedWidget]
 class TimeModelBinding extends StatefulWidget {
   Time selectedTime;
@@ -47,12 +60,11 @@ class TimeModelBinding extends StatefulWidget {
   final bool? disableHour;
 
   final double? maxHour;
-
-  double? maxMinute;
+  double maxMinute;
 
   final double? minHour;
 
-  double? minMinute;
+  double minMinute;
 
   final String? hourLabel;
 
@@ -81,8 +93,6 @@ class TimeModelBinding extends StatefulWidget {
 
   TimeModelBinding({
     Key? key,
-
-
     required this.workingHours,
     required this.child,
     required this.selectedTime,
@@ -107,9 +117,9 @@ class TimeModelBinding extends StatefulWidget {
     this.disableMinute,
     this.disableHour,
     this.maxHour,
-    this.maxMinute,
+    this.maxMinute = 55,
     this.minHour,
-    this.minMinute,
+    this.minMinute = 0,
     required this.maxMinuteAtMaximumHour,
     required this.minMinuteAtCurrentHour,
     this.hourLabel,
@@ -133,32 +143,24 @@ class TimeModelBinding extends StatefulWidget {
   }
 }
 
-class _ModelBindingScope extends InheritedWidget {
-  final TimeModelBindingState modelBindingState;
-
-  const _ModelBindingScope({
-    Key? key,
-    required this.modelBindingState,
-    required Widget child,
-  }) : super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(_ModelBindingScope oldWidget) => true;
-}
-
 class TimeModelBindingState extends State<TimeModelBinding> {
   late Time time = widget.selectedTime;
-  late double hour = time.hour / 60;
-  late double minute = 0;
+  late double hourIndex = time.hour / 60;
+  late double minuteIndex = 0;
 
   bool hourIsSelected = true;
 
   DayPeriod lastPeriod = DayPeriod.am;
 
+  //
+  late final double constMaxMinute;
+  late final double constMinMinute;
+
   @override
   void initState() {
     bool _hourIsSelected = true;
-
+    constMaxMinute = widget.maxMinute;
+    constMinMinute = widget.minMinute;
     if (widget.focusMinutePicker || widget.disableHour!) {
       _hourIsSelected = false;
     }
@@ -189,10 +191,8 @@ class TimeModelBindingState extends State<TimeModelBinding> {
   }
 
   void onHourChange(double value) {
-
     if (value <= widget.workingHours.length) {
-      time = time.replacing(
-          hour: (widget.workingHours[value.toInt()]).round());
+      time = time.replacing(hour: (widget.workingHours[value.toInt()]).round());
       setState(() {});
     }
   }
@@ -207,7 +207,7 @@ class TimeModelBindingState extends State<TimeModelBinding> {
   }
 
   void changeMaxMinute({required double maxMinute}) {
-    widget.maxMinute = maxMinute ;
+    widget.maxMinute = maxMinute;
   }
 
   /// Change handler for `hourIsSelected`

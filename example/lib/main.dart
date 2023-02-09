@@ -29,12 +29,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  TimeOfDay _time = TimeOfDay.now().replacing(hour: 11, minute: 30);
+  TimeOfDay _time = TimeOfDay.now().replacing(hour: 14, minute: 30);
   bool iosStyle = true;
 
   void onTimeChanged(TimeOfDay newTime) {
     setState(() {
-      print("onTimeChanged");
       _time = newTime;
     });
   }
@@ -68,14 +67,10 @@ class _HomeState extends State<Home> {
                         workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
                         context: context,
                         value: _time,
-                        minHour: 9,
-                        maxHour: 1,
-                        maxMinute: 55,
-                        minMinute: 0,
                         onChange: onTimeChanged,
                         minuteInterval: MinuteInterval.FIVE,
-                        maxMinuteAtMaximumHour: 0,
-                        minMinuteAtCurrentHour: 30,
+                        maxMinuteAtMaximumHour: 40,
+                        minMinuteAtCurrentHour: 20,
                         onChangeDateTime: (DateTime dateTime) {
                           debugPrint("[debug datetime]:  $dateTime");
                         },

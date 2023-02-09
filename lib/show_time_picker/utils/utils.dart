@@ -21,7 +21,7 @@ int getIntFromMinuteIntervalEnum(MinuteInterval? interval) {
     case MinuteInterval.THIRTY:
       return 30;
     default:
-      return 1;
+      return 5;
   }
 }
 
@@ -70,9 +70,9 @@ double getMinMinuteStepper(double? minMinute, MinuteInterval? interval) {
 
 /// Get the maximum minute from interval
 double getMaxMinute(double maxMinute, double minMinute) {
-  double minPeriod = minMinute / 5;
-  double maxPeriod = maxMinute / 5;
-  final diff = maxPeriod - minPeriod;
+  double minPeriod = minMinute;
+  double maxPeriod = maxMinute;
+  final diff = (maxPeriod - minPeriod) / 5;
   return diff;
 }
 // double getMaxMinute(double? maxMinute, MinuteInterval? interval) {

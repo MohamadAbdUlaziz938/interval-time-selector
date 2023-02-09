@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interval_time_selector/show_time_picker/utils/utils.dart';
 
 import 'state/state_container.dart';
 import 'state/time.dart';
@@ -34,48 +35,43 @@ PageRouteBuilder showPicker({
   MinuteInterval minuteInterval = MinuteInterval.ONE,
   bool disableMinute = false,
   bool disableHour = false,
-  double minMinuteAtCurrentHour = -1,
-  double minMinute = 0,
-  double maxMinute = 59,
-  bool ascending = true,
+  double minMinuteAtCurrentHour = 0,
   double maxMinuteAtMaximumHour = 0,
+  bool ascending = true,
   ThemeData? themeData,
   bool focusMinutePicker = false,
-  // Infinity is used so that we can assert whether or not the user actually set a value
-  double minHour = double.infinity,
-  double maxHour = double.infinity,
   TextStyle okStyle = const TextStyle(fontWeight: FontWeight.bold),
   TextStyle cancelStyle = const TextStyle(fontWeight: FontWeight.bold),
   ButtonStyle? buttonStyle,
   ButtonStyle? cancelButtonStyle,
   double? buttonsSpacing,
 }) {
-  if (minHour == double.infinity) {
-    minHour = 0;
-  }
-  if (maxHour == double.infinity) {
-    maxHour = 23;
-  }
   assert((workingHours.isNotEmpty), "Working must be not empty");
+  assert((minMinuteAtCurrentHour >= 0),
+      "minMinuteAtCurrentHour must be equal or greater than zero");
+
+  assert((maxMinuteAtMaximumHour >= 0),
+      "maxMinuteAtMaximumHour must be equal or greater than zero");
   assert(!(disableHour == true && disableMinute == true),
       "Both \"disableMinute\" and \"disableHour\" cannot be true.");
 
   assert(!(disableMinute == true && focusMinutePicker == true),
       "Both \"disableMinute\" and \"focusMinutePicker\" cannot be true.");
-  assert(maxMinute <= 59, "\"maxMinute\" must be less than or equal to 59");
-  assert(minMinute >= 0, "\"minMinute\" must be greater than or equal to 0");
-  assert(maxHour <= 24 && minHour >= 0,
-      "\"minHour\" and \"maxHour\" should be between 0-24 ");
-  assert(!(minMinute > 0 && minMinuteAtCurrentHour > 0),
-      "\"minMinute\" and \"minMinuteAtCurrentHour\" can't be selected together");
 
-  if (maxMinuteAtMaximumHour > 0 && value.hour == maxHour) {
-    // maxMinute = maxMinuteAtMaximumHour;
+  /// sort working hours - select max hour, min hour
+  double minHour;
+  double maxHour;
+  if (ascending) {
+    workingHours.sort();
+    minHour = workingHours.last.toDouble();
+    maxHour = workingHours.first.toDouble();
+  } else {
+    workingHours.sort(
+      (a, b) => b.compareTo(a),
+    );
+    minHour = workingHours.first.toDouble();
+    maxHour = workingHours.last.toDouble();
   }
-  if (minMinuteAtCurrentHour > 0 && value.hour == minHour) {
-    // minMinute = minMinuteAtCurrentHour;
-  }
-
   final selectedTimeValue = Time.fromTimeOfDay(value);
 
   return PageRouteBuilder(
@@ -129,9 +125,7 @@ PageRouteBuilder showPicker({
           disableMinute: disableMinute,
           disableHour: disableHour,
           maxHour: maxHour,
-          maxMinute: maxMinute,
           minHour: minHour,
-          minMinute: minMinute,
           focusMinutePicker: focusMinutePicker,
           okStyle: okStyle,
           cancelStyle: cancelStyle,

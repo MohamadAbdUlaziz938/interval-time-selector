@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:interval_time_selector/show_time_picker/state/time.dart';
 import '../../state/state_container.dart';
 import '../../utils/utils.dart';
 import '../am_pm.dart';
@@ -24,34 +25,54 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
   Widget build(BuildContext context) {
     final timeState = TimeModelBinding.of(context);
 
-    double min = getMinMinute(timeState.widget.minMinute);
+    double min = 0;
 
     double max =
-        getMaxMinute(timeState.widget.maxMinute!, timeState.widget.minMinute!);
+        getMaxMinute(timeState.widget.maxMinute, timeState.widget.minMinute);
     int divisions = max.toInt();
 
+    print("timeState.time.hour (1)");
+    print(timeState.time.hour);
+    print("time.hour (1)");
+    print(timeState.hourIndex);
+    print(timeState.widget.workingHours);
+
+    /// if current select is hour
     if (timeState.hourIsSelected) {
       min = 0;
       max = timeState.widget.workingHours.length.toDouble() - 1;
       divisions = max.toInt();
+      if (timeState.widget.workingHours.contains(timeState.time.hour)) {
+        timeState.hourIndex = timeState.widget.workingHours
+            .indexOf(timeState.time.hour)
+            .toDouble();
+      } else {
+        timeState.hourIndex = timeState.widget.workingHours[0].toDouble();
+        timeState.time = Time(timeState.hourIndex.toInt(),
+            timeState.widget.minMinuteAtCurrentHour.toInt());
+      }
 
-      timeState.hour =
-          timeState.widget.workingHours.indexOf(timeState.time.hour).toDouble();
-      timeState.hour = timeState.hour == -1 ? 0 : timeState.hour;
-    } else {
-      if (timeState.hour == 0) {
+      timeState.hourIndex = timeState.hourIndex == -1 ? 0 : timeState.hourIndex;
+      print("result timestate.hour");
+      print(timeState.hourIndex);
+    }
+
+    /// if current select is minute
+    else {
+      if (timeState.hourIndex == 0) {
         timeState.widget.minMinute = timeState.widget.minMinuteAtCurrentHour;
         max = getMaxMinute(
-            timeState.widget.maxMinute!, timeState.widget.minMinute!);
+            timeState.widget.maxMinute, timeState.widget.minMinute);
       }
-      if (timeState.widget.workingHours[timeState.hour.toInt()] ==
+      if (timeState.widget.workingHours[timeState.hourIndex.toInt()] ==
           timeState.widget.maxHour) {
         max = getMaxMinute(timeState.widget.maxMinuteAtMaximumHour,
-            timeState.widget.minMinute!);
+            timeState.widget.minMinute);
       }
       divisions = max.toInt();
-      timeState.minute =
-          ((timeState.time.minute - timeState.widget.minMinute!) / 5);
+      timeState.minuteIndex =
+          ((timeState.time.minute - timeState.widget.minMinute) /
+              getIntFromMinuteIntervalEnum(timeState.widget.minuteInterval));
     }
 
     final color =
@@ -86,7 +107,6 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                       const AmPm(),
                       Expanded(
                         child: Row(
-                          textDirection: ltrMode,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             DisplayValue(
@@ -107,7 +127,8 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                                   : () {
                                       if (max == min) {
                                         timeState.changeMaxMinute(
-                                            maxMinute: 55);
+                                            maxMinute:
+                                                timeState.widget.maxMinute);
                                       }
                                       timeState.onHourIsSelectedChange(false);
                                     },
@@ -127,22 +148,26 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                                 }
                               },
                               value: timeState.hourIsSelected
-                                  ? timeState.hour
-                                  : timeState.minute,
+                                  ? timeState.hourIndex
+                                  : timeState.minuteIndex,
                               onChanged: (value) {
                                 value = value.ceil().toDouble();
-                                if (value == timeState.hour &&
-                                    timeState.hourIsSelected)
+                                if (value == timeState.hourIndex &&
+                                    timeState.hourIsSelected) {
                                   return;
-                                else if (value == timeState.minute &&
-                                    !timeState.hourIsSelected) return;
+                                } else if (value == timeState.minuteIndex &&
+                                    !timeState.hourIsSelected) {
+                                  return;
+                                }
 
                                 if (timeState.hourIsSelected) {
-                                  timeState.hour = value;
+                                  timeState.hourIndex = value;
                                 } else {
-                                  timeState.minute = value;
-                                  value =
-                                      (value * 5) + timeState.widget.minMinute!;
+                                  timeState.minuteIndex = value;
+                                  value = (value *
+                                          getIntFromMinuteIntervalEnum(timeState
+                                              .widget.minuteInterval)) +
+                                      timeState.widget.minMinute;
                                 }
 
                                 timeState.onTimeChange(value);
@@ -150,9 +175,15 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                                 if (timeState.hourIsSelected) {
                                   /// selected hour equal to maximum hour check add allowed maximum minute to max minut
                                   if (value == max) {
-                                    timeState.changeMinMinute(0);
-                                    timeState.onMinuteChange(0);
-                                    timeState.minute = 0;
+                                    timeState.changeMinMinute(
+                                        timeState.constMinMinute);
+                                    timeState.onMinuteChange(
+                                        timeState.constMinMinute);
+                                    timeState.minuteIndex =
+                                        timeState.constMinMinute;
+                                    timeState.changeMaxMinute(
+                                        maxMinute: timeState
+                                            .widget.maxMinuteAtMaximumHour);
                                   }
 
                                   /// selected hour is current hour change min minute
@@ -162,12 +193,17 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                                     timeState.onMinuteChange(timeState
                                         .widget.minMinuteAtCurrentHour);
 
-                                    timeState.changeMaxMinute(maxMinute: 55);
+                                    timeState.changeMaxMinute(
+                                        maxMinute: timeState.constMaxMinute);
                                   } else {
-                                    timeState.changeMinMinute(0);
-                                    timeState.onMinuteChange(0);
-                                    timeState.minute = 0;
-                                    timeState.changeMaxMinute(maxMinute: 55);
+                                    timeState.changeMinMinute(
+                                        timeState.constMinMinute);
+                                    timeState.onMinuteChange(
+                                        timeState.constMinMinute);
+                                    timeState.minuteIndex =
+                                        timeState.constMinMinute;
+                                    timeState.changeMaxMinute(
+                                        maxMinute: timeState.constMaxMinute);
                                   }
                                 }
                               },
