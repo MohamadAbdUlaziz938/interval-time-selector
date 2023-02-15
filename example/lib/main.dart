@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:interval_time_selector/show_time_picker/day_time_picker.dart';
-import 'package:interval_time_selector/show_time_picker/utils/constant.dart';
 
 void main() => runApp(const MyApp());
 
@@ -67,10 +66,10 @@ class _HomeState extends State<Home> {
                         workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
                         context: context,
                         value: _time,
+                        ascending: false,
                         onChange: onTimeChanged,
-                        minuteInterval: MinuteInterval.FIVE,
                         maxMinuteAtMaximumHour: 40,
-                        minMinuteAtCurrentHour: 20,
+                        minMinuteAtMinimumHour: 20,
                         onChangeDateTime: (DateTime dateTime) {
                           debugPrint("[debug datetime]:  $dateTime");
                         },

@@ -31,12 +31,6 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
         getMaxMinute(timeState.widget.maxMinute, timeState.widget.minMinute);
     int divisions = max.toInt();
 
-    print("timeState.time.hour (1)");
-    print(timeState.time.hour);
-    print("time.hour (1)");
-    print(timeState.hourIndex);
-    print(timeState.widget.workingHours);
-
     /// if current select is hour
     if (timeState.hourIsSelected) {
       min = 0;
@@ -47,20 +41,19 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
             .indexOf(timeState.time.hour)
             .toDouble();
       } else {
-        timeState.hourIndex = timeState.widget.workingHours[0].toDouble();
-        timeState.time = Time(timeState.hourIndex.toInt(),
-            timeState.widget.minMinuteAtCurrentHour.toInt());
+        timeState.hourIndex = 0;
+        timeState.time = Time(
+            timeState.widget.workingHours[timeState.hourIndex.toInt()],
+            timeState.widget.minMinuteAtMinimumHour.toInt());
       }
 
       timeState.hourIndex = timeState.hourIndex == -1 ? 0 : timeState.hourIndex;
-      print("result timestate.hour");
-      print(timeState.hourIndex);
     }
 
     /// if current select is minute
     else {
       if (timeState.hourIndex == 0) {
-        timeState.widget.minMinute = timeState.widget.minMinuteAtCurrentHour;
+        timeState.widget.minMinute = timeState.widget.minMinuteAtMinimumHour;
         max = getMaxMinute(
             timeState.widget.maxMinute, timeState.widget.minMinute);
       }
@@ -86,7 +79,6 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
         timeState.widget.ltrMode ? TextDirection.ltr : TextDirection.rtl;
 
     Orientation currentOrientation = MediaQuery.of(context).orientation;
-
     return Center(
       child: SingleChildScrollView(
         physics: currentOrientation == Orientation.portrait
@@ -189,9 +181,9 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
                                   /// selected hour is current hour change min minute
                                   else if (value == min) {
                                     timeState.changeMinMinute(timeState
-                                        .widget.minMinuteAtCurrentHour);
+                                        .widget.minMinuteAtMinimumHour);
                                     timeState.onMinuteChange(timeState
-                                        .widget.minMinuteAtCurrentHour);
+                                        .widget.minMinuteAtMinimumHour);
 
                                     timeState.changeMaxMinute(
                                         maxMinute: timeState.constMaxMinute);

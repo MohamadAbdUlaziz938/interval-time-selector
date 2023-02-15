@@ -55,7 +55,7 @@ class TimeModelBinding extends StatefulWidget {
   final MinuteInterval? minuteInterval;
 
   bool? disableMinute;
-  double minMinuteAtCurrentHour;
+  double minMinuteAtMinimumHour;
 
   final bool? disableHour;
 
@@ -118,10 +118,10 @@ class TimeModelBinding extends StatefulWidget {
     this.disableHour,
     this.maxHour,
     this.maxMinute = 55,
-    this.minHour,
     this.minMinute = 0,
+    this.minHour,
     required this.maxMinuteAtMaximumHour,
-    required this.minMinuteAtCurrentHour,
+    required this.minMinuteAtMinimumHour,
     this.hourLabel,
     this.minuteLabel,
     this.isInlineWidget = false,
@@ -145,7 +145,7 @@ class TimeModelBinding extends StatefulWidget {
 
 class TimeModelBindingState extends State<TimeModelBinding> {
   late Time time = widget.selectedTime;
-  late double hourIndex = time.hour / 60;
+  late double hourIndex = 0;
   late double minuteIndex = 0;
 
   bool hourIsSelected = true;
