@@ -14,6 +14,10 @@ Help you to select specific hours selectable and minute interval.
 <a href="#screenshots">
 <img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/1.png" width="200px">
 </a>
+<a href="#screenshots">
+<img src="https://github.com/MohamadAbdUlaziz938/interval-time-selector/blob/master/screenshots/2.gif" width="200px">
+</a>
+
 
 ## 💻 Installation
 
@@ -53,7 +57,7 @@ folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/t
 
 ## 👨 Updated By
 
-Mohamad Abd-Ulaziz [Mail](mohamad.samer.abdulaziz@gmail.com)
+Mohamad Abd-Ulaziz <a href="mailto:mohamad.samer.abdulaziz@gmail.com">Mail</a>
 
 ## Getting started
 
