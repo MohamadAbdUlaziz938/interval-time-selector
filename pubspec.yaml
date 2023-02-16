@@ -1,5 +1,5 @@
-name: interval_time_selector
-description: Interval time picker interval minutes, specific hour
+name: specific_interval_time_selector
+description: Specific Interval time picker interval minutes, specific hour
 version: 0.0.1
 homepage: https://github.com/MohamadAbdUlaziz938/interval-time-selector
 
