@@ -165,11 +165,8 @@ Widget createInlinePicker({
   bool iosStylePicker = false,
   String hourLabel = 'hours',
   String minuteLabel = 'minutes',
-  MinuteInterval minuteInterval = MinuteInterval.ONE,
   bool disableMinute = false,
   bool disableHour = false,
-  double minMinute = 0,
-  double maxMinute = 59,
   bool displayHeader = true,
   ThemeData? themeData,
   bool focusMinutePicker = false,
@@ -188,15 +185,15 @@ Widget createInlinePicker({
 }) {
   assert((workingHours.isNotEmpty), "Working must be not empty");
   assert((minMinuteAtMinimumHour >= 0),
-  "minMinuteAtCurrentHour must be equal or greater than zero");
+      "minMinuteAtCurrentHour must be equal or greater than zero");
 
   assert((maxMinuteAtMaximumHour >= 0),
-  "maxMinuteAtMaximumHour must be equal or greater than zero");
+      "maxMinuteAtMaximumHour must be equal or greater than zero");
   assert(!(disableHour == true && disableMinute == true),
-  "Both \"disableMinute\" and \"disableHour\" cannot be true.");
+      "Both \"disableMinute\" and \"disableHour\" cannot be true.");
 
   assert(!(disableMinute == true && focusMinutePicker == true),
-  "Both \"disableMinute\" and \"focusMinutePicker\" cannot be true.");
+      "Both \"disableMinute\" and \"focusMinutePicker\" cannot be true.");
 
   /// sort working hours - select max hour, min hour
   double minHour;
@@ -207,7 +204,7 @@ Widget createInlinePicker({
     maxHour = workingHours.last.toDouble();
   } else {
     workingHours.sort(
-          (a, b) => b.compareTo(a),
+      (a, b) => b.compareTo(a),
     );
 
     minHour = workingHours.first.toDouble();
@@ -238,13 +235,11 @@ Widget createInlinePicker({
     borderRadius: borderRadius,
     elevation: elevation,
     dialogInsetPadding: dialogInsetPadding,
-    minuteInterval: minuteInterval,
+    minuteInterval: MinuteInterval.FIVE,
     disableMinute: disableMinute,
     disableHour: disableHour,
     maxHour: maxHour,
-    maxMinute: maxMinute,
     minHour: minHour,
-    minMinute: minMinute,
     isInlineWidget: true,
     displayHeader: displayHeader,
     isOnValueChangeMode: isOnChangeValueMode,

@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
                         workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
                         context: context,
                         value: _time,
-                        ascending: false,
+                        ascending: true,
                         onChange: onTimeChanged,
                         maxMinuteAtMaximumHour: 40,
                         minMinuteAtMinimumHour: 20,

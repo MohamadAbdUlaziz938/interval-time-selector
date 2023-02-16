@@ -33,23 +33,19 @@ import 'package:interval_time_selector/show_time_picker/day_time_picker.dart';
 
 ```
 Navigator.of(context).push(
-          showPicker(
-            workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
-            context: context,
-            value: _time,
-            minHour: 9,
-            maxHour: 1,
-            maxMinute: 55,
-            minMinute: 0,
-            onChange: onTimeChanged,
-            minuteInterval: MinuteInterval.FIVE,
-            maxMinuteAtMaximumHour: 0,
-            minMinuteAtCurrentHour: 30,
-            onChangeDateTime: (DateTime dateTime) {
-              debugPrint("[debug datetime]:  $dateTime");
-            },
-          ),
-        );
+                      showPicker(
+                        workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
+                        context: context,
+                        value: _time,
+                        ascending: true,
+                        onChange: onTimeChanged,
+                        maxMinuteAtMaximumHour: 40,
+                        minMinuteAtMinimumHour: 20,
+                        onChangeDateTime: (DateTime dateTime) {
+                          debugPrint("[debug datetime]:  $dateTime");
+                        },
+                      ),
+           );
 ```
 
 Longer examples find in `/example`
