@@ -90,7 +90,6 @@ class DayNightTimePickerAndroidState extends State<DayNightTimePickerAndroid> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const DayNightBanner(),
                 WrapperContainer(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,

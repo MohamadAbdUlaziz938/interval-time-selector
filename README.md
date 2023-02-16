@@ -32,7 +32,7 @@ import 'package:interval_time_selector/show_time_picker/day_time_picker.dart';
 ## Usage
 
 ```
-Navigator.of(context).push(
+            Navigator.of(context).push(
                       showPicker(
                         workingHours: [0, 1, 9, 12, 11, 12, 13, 15, 19, 23],
                         context: context,
@@ -53,9 +53,7 @@ folder [example](https://github.com/MohamadAbdUlaziz938/interval-time-selector/t
 
 ## 👨 Updated By
 
-```
-Mohamad Abd-Ulaziz
-```
+Mohamad Abd-Ulaziz [Mail](mohamad.samer.abdulaziz@gmail.com)
 
 ## Getting started
 
